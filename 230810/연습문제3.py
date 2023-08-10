@@ -5,7 +5,7 @@ sys.stdin = open("input.txt")
 def dfs(n, V, adj_m):
     stack = []
     visited = [0] * (V+1) # 방문하면 1로 변경
-    print(n)
+    print(n, end='')
     visited[n] = 1
     while True:
 # 2)정점 v에 인접한 정점 중에서
@@ -20,7 +20,7 @@ def dfs(n, V, adj_m):
                     # 정점 w를 방문한다.
                     # 그리고 w를 v로 하여
                     n = w # w에 방문
-                    print(n)
+                    print(n, end='')
                     visited[n] = 1 # 방문했다고 표시
                     # 다시 2)를 반복한다.
                     break
@@ -43,3 +43,5 @@ for i in range(E):
     v1, v2 = arr[i*2], arr[i*2+1]
     adj_m[v1][v2] = 1
     adj_m[v2][v1] = 1
+
+dfs(1, V, adj_m)
