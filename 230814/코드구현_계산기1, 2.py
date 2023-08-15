@@ -34,13 +34,13 @@ for x in fx:
 # 연산자인 경우 아래와 같이 간단하게 사용가능하다. (내가 직접 줄인 것)
 '''
     else:
-            # top이 -1이보다 크고 i 보다 top의 우선순위가 크거나 같다면 pop을 해준다.
-            # top이 -1이거나 i의 우선순위가 높아지면 while은 무시되고 pop을 진행한다.
-            while top > -1 and isp[stack[top]] >= icp[i]:
-                math += stack[top]
-                top -= 1
-            top += 1
-            stack[top] = i
+        # top이 -1이보다 크고 i 보다 top의 우선순위가 크거나 같다면 pop을 해준다.
+        # top이 -1이거나 i의 우선순위가 높아지면 while은 무시되고 pop을 진행한다.
+        while top > -1 and isp[stack[top]] >= icp[x]:
+            susik += stack[top]
+            top -= 1
+        top += 1
+        stack[top] = x
 '''
 print(susik)
 
@@ -65,4 +65,5 @@ for x in susik:
         elif x == '/':
             top += 1
             stack[top] = op1 / op2
+
 print(stack[top])
