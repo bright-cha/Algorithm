@@ -24,6 +24,7 @@ T = int(input())
 for tc in range(1, T + 1):
     n_people, second, cnt = map(int, input().split())
     people = list(map(int, input().split()))
+    # 범죄 검거
     people.sort()
     waiting = []
 
