@@ -1,5 +1,8 @@
 import sys
+
 sys.stdin = open('input.txt')
+
+
 #####################################
 def cooking():
     cooking_time = 0
@@ -15,6 +18,7 @@ def cooking():
         if (cooking_time % second) == 0:
             snack += cnt
     return 1
+
 
 T = int(input())
 for tc in range(1, T + 1):
