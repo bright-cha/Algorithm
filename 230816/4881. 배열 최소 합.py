@@ -16,6 +16,7 @@ def check_candidates(idx, max_len, candidates):
     return cnt_candidates
 
 
+<<<<<<< HEAD
 def backtrack(idx, max_len):
     global collected
     global min_value
@@ -27,6 +28,14 @@ def backtrack(idx, max_len):
         if sum_v > min_value:
             return
     candidates = [0] * (max_len + 1)
+=======
+def backtracking(now, size, sum_v):
+    global min_v
+    # 가지치기
+    if min_v < sum_v:
+        return
+    unuser_n = [0] * nmax
+>>>>>>> 74b3726dd9442f5d683d17f2473ea665f744f43d
 
     if idx == max_len:
         if sum_v < min_value:
@@ -34,6 +43,7 @@ def backtrack(idx, max_len):
             return
 
     else:
+<<<<<<< HEAD
         idx += 1
         ncandidates = check_candidates(idx, max_len, candidates)
         for i in range(ncandidates):
@@ -53,3 +63,21 @@ for tc in range(1, T + 1):
 
     backtrack(0, max_len)
     print(f'#{tc}', min_value)
+=======
+        now += 1
+        ncondidates = ?????????????(now, size, sum_v, unuser_n)
+        for i in range(ncondidates):
+            backtracking(now, size, sum_v)
+
+
+T = int(input())
+for tc in range(1, T + 1):
+    size = int(input())
+    arr = [list(map(int, input().split())) for _ in range(size)]
+    min_v = 1e9
+    nmax = size
+    bit = [0] * size
+    maxcondidates = size + 1
+
+    backtracking(0, size, 0)
+>>>>>>> 74b3726dd9442f5d683d17f2473ea665f744f43d
