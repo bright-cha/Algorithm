@@ -4,6 +4,7 @@ v1 w1 v2 v2 ...
 7 8
 1 2 1 3 2 4 2 5 4 6 5 6 6 7 3 7
 '''
+'''
 def dfs(n, V, adj_m):
     stack = []               # stack 생성
     visited = [0] * (V+1)    # visited 생성
@@ -35,3 +36,36 @@ for i in range(E):
     adj_m[v2][v1] = 1
 
 dfs(1, V, adj_m)
+'''
+
+
+def dfs(start):
+    # 차례대로 방문
+    for w in gp[start]:
+        # 방문하지 않았을 경우만
+        if not visited[w]:
+            dfs(w)
+
+
+
+n, m, r = map(int, input().split())
+# 그래프 초기화
+gp = [[] for _ in range(n+1)]
+# 방문체크용
+visited = [0] * (n+1)
+
+# 그래프 노드 연결
+for _ in range(m):
+    u, v = map(int, input().split())
+    gp[u].append(v)
+    gp[v].append(u)
+
+# 오름차순으로 정렬
+for i in range(n+1):
+    gp[i].sort()
+
+
+dfs(r)
+
+for i in range(1, n+1):
+    print(visited[i])
