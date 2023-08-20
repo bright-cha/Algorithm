@@ -1,37 +1,55 @@
-# import sys
-# sys.stdin = open('input.txt')
-# ##################################
+import sys
+sys.stdin = open('input.txt')
+#######################################
+def check_candidates(idx, max_len, candidates):
+    used_num = [False] * (max_len + 1)
+
+    for i in range(1, idx):
+        used_num[collected[i]] = True
+
+    cnt_candidates = 0
+    for i in range(1, max_len + 1):
+        if not used_num[i]:
+            candidates[cnt_candidates] = i
+            cnt_candidates += 1
+
+    return cnt_candidates
 
 
-def backtracking(now, size, sum_v):
-    global min_v
-    # 가지치기
-    if min_v < sum_v:
-        return
+def backtrack(idx, max_len):
+    global collected
+    global min_value
+    sum_v = 0
+    row = 0
+    for i in range(1, idx + 1):
+        sum_v += matrix[row][collected[i] - 1]
+        row += 1
+        if sum_v > min_value:
+            return
+    candidates = [0] * (max_len + 1)
 
-    # 부분집합 완성
-    if now == size:
-        if min_v > sum_v:
-            min_v = sum_v
+    if idx == max_len:
+        if sum_v < min_value:
+            min_value = sum_v
             return
 
-    # 미완성
     else:
-        now += 1
-        backtracking(now, size, sum_v)
+        idx += 1
+        ncandidates = check_candidates(idx, max_len, candidates)
+        for i in range(ncandidates):
+            collected[idx] = candidates[i]
+            backtrack(idx, max_len)
 
 
-# T = int(input())
-# for tc in range(1, T + 1):
+
+
+T = int(input())
+for tc in range(1, T + 1):
     size = int(input())
-    # arr = [list(map(int, input().split())) for _ in range(size)]
-    arr = [1, 2, 3, 4, 5]
-    min_v = 1e9
+    matrix = [list(map(int, input().split())) for _ in range(size)]
+    max_len = size
+    collected = [0] * (size + 1)
+    min_value = 1e9
 
-    # for i in range(size):
-    bit = [0] * size
-    # visit = [0] * size
-    backtracking(0, size, 0)
-
-    # print(f'#{tc}', min_v)
-
+    backtrack(0, max_len)
+    print(f'#{tc}', min_value)

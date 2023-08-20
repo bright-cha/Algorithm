@@ -89,3 +89,36 @@ cnt = 0
 f(0, N, 0, 55)    # t 가 10 인경우 cnt = 349 / 55인경우 2047
 print(cnt)
 """
+# 교재
+def check_solution(include, k):
+    print("(", end='')
+    for i in range(k + 1):
+        if include[i]:
+            print(i, end=' ')
+    print(')')
+
+
+def check_candidates(include, k, input, c):  # 후보 확인
+    c[0] = True
+    c[1] = False
+    return 2
+
+
+def backtrack(include, k, input):
+    global MAXCANDIDATES
+    c = [0] * MAXCANDIDATES  # c = candidates 즉, 각 자리에 올 수 있는 후보를 파악하기 위한 리스트
+
+    if k == input:
+        check_solution(include, k)  # 답이면 원하는 작업을 한다.
+    else:
+        k += 1
+        ncandidates = check_candidates(include, k, input, c)  # 후보를 구하고 후보의 갯수를 리턴한다.
+        for i in range(ncandidates):  # 후보의 개수를 하나하나 확인하기 위한 반복문으로
+            include[k] = c[i]               # 해당하는 경우를 재귀함수를 통해 결과까지 살펴본다.
+            backtrack(include, k, input)
+
+
+MAXCANDIDATES = 100
+NMAX = 100
+include = [0] * NMAX  # 자리별 포함 유무 리스트
+backtrack(include, 0, 3)  # 결과리스트, 0 = 1번 자리부터 채우기 위해, 3 = 숫자의 길이 ex) 123

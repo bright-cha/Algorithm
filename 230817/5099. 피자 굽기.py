@@ -14,7 +14,7 @@ def deQueue():
 
 
 def qPeek():
-    return oven[front]
+    return oven[(front+1) % size]
 
 
 T = int(input())
@@ -32,6 +32,7 @@ for tc in range(1, T + 1):
             enQueue([pizza.pop(0), idx])
             idx += 1
             continue
+        #
         if qPeek()[0] == 0:
             deQueue()
             complete += 1
