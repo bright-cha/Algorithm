@@ -10,14 +10,12 @@ def enQueue(data):
 def deQueue():
     global front
     front = (front+1) % size
-<<<<<<< HEAD
 
 
 def qPeek():
     return oven[(front+1) % size]
-=======
+
     return oven[front]
->>>>>>> 74b3726dd9442f5d683d17f2473ea665f744f43d
 
 
 T = int(input())
@@ -38,8 +36,7 @@ for tc in range(1, T + 1):
             enQueue([pizza.pop(0), idx])
             idx += 1
             continue
-<<<<<<< HEAD
-        #
+
         if qPeek()[0] == 0:
             deQueue()
             complete += 1
@@ -49,8 +46,6 @@ for tc in range(1, T + 1):
             rear = (rear + 1) % size
             front = (front + 1) % size
             continue
-=======
->>>>>>> 74b3726dd9442f5d683d17f2473ea665f744f43d
 
         check = deQueue()
         if check[0] < 2:
