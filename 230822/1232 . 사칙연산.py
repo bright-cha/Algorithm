@@ -1,44 +1,47 @@
 import sys
 sys.stdin = open('input.txt')
 ##########################################
-def postorder_traversal(idx):
-    if idx < cnt_node + 1:
-        postorder_traversal(ch1[idx])
-        postorder_traversal(ch2[idx])
-        if type(tree[idx]) == int:
-            rst.append(tree[idx])
-        else:
-            a2 = rst.pop()
-            a1 = rst.pop()
-            if tree[idx] == '+':
-                rst.append(a1 + a2)
-            elif tree[idx] == '-':
-                rst.append(a1 - a2)
-            elif tree[idx] == '*':
-                rst.append(a1 * a2)
-            elif tree[idx] == '/':
-                rst.append(a1 // a2)
-    else:
-        return
+def traversal(idx):
+    if idx <= cnt_node:
+        if ch1[idx]:
+            traversal(ch1[idx])
+            traversal(ch2[idx])
+        stack.append(tree[idx])
 
-T = 10
-for tc in range(1, T + 1):
-    print(tc, '================')
+
+for tc in range(1, 11):
     cnt_node = int(input())
-
-    tree = [0]
+    tree = [0] * (cnt_node + 1)
     ch1 = [0] * (cnt_node + 1)
     ch2 = [0] * (cnt_node + 1)
+    stack = []
     for _ in range(1, cnt_node + 1):
         i = list(input().split())
         if i[1] not in '/*-+':
-            i = int(i[1])
-            tree.append(i)
+            node, num = int(i[0]), i[1]
+            tree[node] = num
         else:
-            tree.append(i[1])
             ch1[int(i[0])] = int(i[2])
-            ch1[int(i[0])] = int(i[3])
+            ch2[int(i[0])] = int(i[3])
+            tree[int(i[0])] = i[1]
+
+    traversal(1)
 
     rst = []
-    postorder_traversal(1)
-    print(tree)
+    for i in stack:
+        if i not in '/*-+':
+            i = int(i)
+            rst.append(i)
+        else:
+            a2 = rst.pop()
+            a1 = rst.pop()
+            if i == '+':
+                rst.append(a1 + a2)
+            if i == '-':
+                rst.append(a1 - a2)
+            if i == '*':
+                rst.append(a1 * a2)
+            if i == '/':
+                rst.append(a1 / a2)
+
+    print(f'#{tc}', int(*rst))

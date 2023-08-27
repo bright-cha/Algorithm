@@ -10,7 +10,7 @@ for tc in range(1, T + 1):
         for j in range(size):
             # 만약 1이 있다면
             if matrix[j][i] == 1:
-                # 다음 열부터 파악한다.
+                # 다음 열부터 파악한다 .
                 for k in matrix[j+1:size]:
                     # 1이면 멈추고 2이면 실행한다.
                     if k[i] == 1:
