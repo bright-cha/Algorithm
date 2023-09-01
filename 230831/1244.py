@@ -1,6 +1,4 @@
 def change(idx, leng, cnt):
-    if len(rst) == 567:
-        print(1)
     global max_v
     if cnt < 1:
         temp = int(''.join(num))
@@ -8,11 +6,10 @@ def change(idx, leng, cnt):
             rst.append(temp)
     else:
         for i in range(len(num)):
-            for j in range(i + 1, len(num)):
-               if i != j:
-                    num[j], num[i] = num[i], num[j]
-                    change(idx % leng + 1, leng, cnt - 1)
-                    num[j], num[i] = num[i], num[j]
+            if i != idx % leng:
+                num[idx % leng], num[i] = num[i], num[idx % leng]
+                change(idx % leng + 1, leng, cnt - 1)
+                num[idx % leng], num[i] = num[i], num[idx % leng]
 
 
 T = int(input())
