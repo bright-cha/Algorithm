@@ -1,45 +1,51 @@
-row, col = map(int, input().split())
-matrix = [list(map(int, input().split())) for _ in range(row)]
-cnt = 0
-
-didj = []
-for i in range(-1, 2, 1):
-    for j in range(-1, 2, 1):
-        if i == 0 and j == 0:
-            continue
-        didj.append((i, j))
+from collections import deque
 
 
-visited = []
-for i in range(row):
-    for j in range(col):
-        temp_visited = []
-        ij = []
-        flag = 0
-        for di, dj in didj:
+def bfs(i, j):
+    global cnt
+    que = deque([(i, j)])
+    while que:
+        i, j = que.popleft()
+        for di, dj in dij:
             ni, nj = i + di, j + dj
             if 0 <= ni < row and 0 <= nj < col:
+                # 기준점 주위 큰 값이 있다면
                 if matrix[i][j] < matrix[ni][nj]:
-                    break
-                if matrix[i][j] == matrix[ni][nj]:
-                    temp_visited.append((i, j))
-                    flag = 1
-                    visited.append((i, j))
-                    ij.append((ni, nj))
-        else:
-            while flag and ij:
-                p, q = ij.pop(0)
-                for di, dj in didj:
-                    ni, nj = p + di, q + dj
-                    if 0 <= ni < row and 0 <= nj < col:
-                        if matrix[p][q] < matrix[ni][nj]:
-                            flag = 0
-                            visited.clear()
-                            break
-                        if matrix[p][q] == matrix[ni][nj] and ((ni, nj) not in temp_visited):
-                            ij.append((ni, nj))
-                            temp_visited.append((p, q))
-            else:
-                cnt += 1
+                    return 0
+                # 같은 값이있고 방문하지 않았다면
+                elif matrix[i][j] == matrix[ni][nj] and visited[ni][nj] == 0:
+                    visited[ni][nj] = 1
+                    que.append((ni, nj))
+    return 1
+
+
+row, col = map(int, input().split())
+matrix = [list(map(int, input().split())) for _ in range(row)]
+
+# 델타 구하기
+dij = []
+for i in range(-1, 2):
+    for j in range(-1, 2):
+        if i == 0 and j == 0:
+            continue
+        dij.append((i, j))
+
+# 하나씩 탐색
+cnt = 0
+visited = [[0] * col for _ in range(row)]
+for i in range(row):
+    for j in range(col):
+        # 0이아니고 방문하지않았다면
+        if matrix[i][j] != 0 and visited[i][j] == 0:
+            cnt += bfs(i, j)
 
 print(cnt)
+
+'''
+3 3
+1 2 1
+0 1 0
+1 0 1
+2행 0열에서 가운데 1이 방문표시가 되어
+2행 2열에서 2를 탐색하지 못해 반례가 된다. 해결이 안됨;; 
+'''
