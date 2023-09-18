@@ -2,9 +2,10 @@ import sys
 sys.stdin = open('input.txt')
 sys.setrecursionlimit(10 ** 7)
 
-from collections import deque
-
-
+'''
+deque를 활용한다면 시간초과가 난다.
+따라서 lidx, ridx를 통해 순회하지 않고 해당 인덱스에 바로 접근할 수 있도록 하였다.
+'''
 def merge(left, right):
     global rst1
     # 만약 왼쪽 마지막 숫자가 크다면 +1
@@ -13,28 +14,28 @@ def merge(left, right):
 
     # 리턴할 리스트 초기화
     result = []
-    # 가져와야할 숫자가 있다면 반복
-    ll = len(left)
-    lr = len(right)
-    # while ll > 0 or lr > 0:
+
+    # 각 리스트별 인덱스 초기화
+    lidx, ridx = 0, 0
+
     # 둘다 숫자가 있다면
-    while ll > 0 and lr > 0:
-        # 왼쪽 첫 번째 숫자가 더 작거나 같다면,
-        if left[0] <= right[0]:
-            result.append(left.popleft())
-            ll -= 1
+    while lidx < len(left) and ridx < len(right):
+        # 왼쪽 숫자가 더 작거나 같다면,
+        if left[lidx] <= right[ridx]:
+            result.append(left[lidx])
+            lidx += 1
         # 오른쪽이 더 작다면
         else:
-            result.append(right.popleft())
-            lr -= 1
+            result.append(right[ridx])
+            ridx += 1
     # 왼쪽만 숫자가 있다면
-    while ll:
-        result.append(left.popleft())
-        ll -= 1
+    while lidx < len(left):
+        result.append(left[lidx])
+        lidx += 1
     # 오른쪽만 숫자가 있다면
-    while lr:
-        result.append(right.popleft())
-        lr -= 1
+    while ridx < len(right):
+        result.append(right[ridx])
+        ridx += 1
 
     return result
 
@@ -62,7 +63,7 @@ def mergeSort(lst):
         right = mergeSort(right)
 
     # 병합단계를 거친 값을 리턴
-    return merge(deque(left), deque(right))
+    return merge(left, right)
 
 
 T = int(input())

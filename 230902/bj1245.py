@@ -2,8 +2,9 @@ from collections import deque
 
 
 def bfs(i, j):
-    global cnt
+    global cnt, flag
     que = deque([(i, j)])
+
     while que:
         i, j = que.popleft()
         for di, dj in dij:
@@ -11,12 +12,12 @@ def bfs(i, j):
             if 0 <= ni < row and 0 <= nj < col:
                 # 기준점 주위 큰 값이 있다면
                 if matrix[i][j] < matrix[ni][nj]:
-                    return 0
+                    flag = 0
                 # 같은 값이있고 방문하지 않았다면
                 elif matrix[i][j] == matrix[ni][nj] and visited[ni][nj] == 0:
                     visited[ni][nj] = 1
                     que.append((ni, nj))
-    return 1
+    return
 
 
 row, col = map(int, input().split())
@@ -35,9 +36,11 @@ cnt = 0
 visited = [[0] * col for _ in range(row)]
 for i in range(row):
     for j in range(col):
+        flag = 1
         # 0이아니고 방문하지않았다면
         if matrix[i][j] != 0 and visited[i][j] == 0:
-            cnt += bfs(i, j)
+            bfs(i, j)
+            cnt += flag
 
 print(cnt)
 
