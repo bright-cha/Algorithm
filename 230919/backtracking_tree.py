@@ -23,10 +23,10 @@ def backtracking(cnt):
         # 돌아와서 초기화
         path[cnt] = 0
 
+
 backtracking(0)
 
 
-#
 #
 # def func():
 #     # 재귀를 끝내는 기저 조건
