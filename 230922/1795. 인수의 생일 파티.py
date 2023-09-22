@@ -43,12 +43,11 @@ for tc in range(1, int(input()) + 1):
     # 최대값
     max_v = 0
 
-    # X에서 각 정점까지 오고가는 시간 확인
+    # X에서 각 정점까지 가는 시간 확인
     v2 = dijkstra(X)
 
-    # 각 정점에서 X까지 시간 구하기
+    # 각 정점에서 X까지 시간 구해서 더하기
     for i in range(1, V + 1):
-        # i까지 오고가는 시간 더하기
         temp = v2[i] + dijkstra(i)[X]
         max_v = max(max_v, temp)
     print(f'#{tc}', max_v)
