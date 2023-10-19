@@ -1,12 +1,16 @@
 from collections import deque
+import sys
+input = sys.stdin.readline
 
 
+# 도착 가능여부
 def is_possible(start):
     visited = [0] * N
     # 위치, 돈
     q = deque([start])
     while q:
         start = q.popleft()
+
         for e, m in graph[start]:
             if visited[e] == 0:
                 q.append(e)
@@ -20,8 +24,7 @@ def is_possible(start):
 
 def bfs(start):
     # 위치, 돈
-    q = deque([(start, profit[start], [])])
-    max_v = [-1e9, [51]]
+    q = deque([(start, profit[start], [start])])
 
     if is_possible(start):
         visited = 0
@@ -29,24 +32,25 @@ def bfs(start):
             start, money, lst = q.popleft()
 
             if start == end_city:
-                if lst == max_v[1]:
-                    visited += 1
-                    if visited >= 2:
-                        if max_v[0] < money:
-                            return 'Gee'
-                        else:
-                            return max_v[0]
+                temp = []
+                for i in lst:
+                    if i not in temp:
+                        temp.append(i)
+                temp = tuple(temp)
 
-                max_v = [max(max_v[0], money), lst]
+                route.setdefault(temp, money)
+                if route[temp] < money:
+                    return 'Gee'
+                elif route[temp] > money:
+                    max_v = -1e9
+                    for k, v in route.items():
+                        max_v = max(max_v, v)
+                    return max_v
 
             for e, m in graph[start]:
-                if start != e:
-                    if m in lst:
-                        lst.remove(m)
-                    lst.append(m)
-                    q.append((e, money + m + profit[e], lst))
-                # else:
-                #     q.append((start, money, lst))
+                # 도착시 내 위치, 기존 금액 - 요금 + 도착 시 이익, 기록
+                q.append((e, money + m + profit[e], lst + [e]))
+
     else:
         return 'gg'
 
@@ -58,8 +62,11 @@ info_traffic = [list(map(int, input().split())) for _ in range(M)]
 # 도시별 이익
 profit = list(map(int, input().split()))
 
+# 출발 도착 요금
 graph = [[] for _ in range(N)]
 for s, e, m in info_traffic:
     graph[s].append((e, -m))
+
+route = {}
 
 print(bfs(start_city))
