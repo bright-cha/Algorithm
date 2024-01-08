@@ -1,0 +1,19 @@
+
+V
+java:S1854"9Remove this useless assignment to local variable "itemY".(úâË¡8»‘Î1
+V
+java:S1854"9Remove this useless assignment to local variable "itemX".(î…ã²8»‘Î1
+`
+java:S1854">Remove this useless assignment to local variable "characterY".(’ó­›úÿÿÿÿ8»‘Î1
+Z
+java:S1854"=Remove this useless assignment to local variable "rectangle".(€à¿ƒ8»‘Î1
+K
+java:S1481".Remove this unused "rectangle" local variable.(€à¿ƒ8»‘Î1
+Q
+java:S1481"/Remove this unused "characterX" local variable.(ÂÁÂùÿÿÿÿ8»‘Î1
+Q
+java:S1481"/Remove this unused "characterY" local variable.(’ó­›úÿÿÿÿ8»‘Î1
+G
+java:S1481"*Remove this unused "itemX" local variable.(î…ã²8»‘Î1
+G
+java:S1481"*Remove this unused "itemY" local variable.(úâË¡8»‘Î1
