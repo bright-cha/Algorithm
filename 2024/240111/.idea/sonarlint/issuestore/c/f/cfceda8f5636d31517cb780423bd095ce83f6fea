@@ -1,0 +1,10 @@
+
+_
+java:S1854
+"=Remove this useless assignment to local variable "newMatrix".(¹œ™¾úÿÿÿÿ8æÈµÏ1
+P
+java:S1172	"3Remove these unused method parameters "dir", "dis".(İ°‚8 ƒˆµÏ1
+P
+java:S1481
+".Remove this unused "newMatrix" local variable.(¹œ™¾úÿÿÿÿ8æÈµÏ1
+E	java:S108")Either remove or fill this block of code.(¯Äâ8¡ƒˆµÏ1
