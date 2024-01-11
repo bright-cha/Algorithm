@@ -1,10 +1,9 @@
 
-_
-java:S1854
-"=Remove this useless assignment to local variable "newMatrix".(¹œ™¾úÿÿÿÿ8æÈµÏ1
-P
-java:S1172	"3Remove these unused method parameters "dir", "dis".(İ°‚8 ƒˆµÏ1
-P
-java:S1481
-".Remove this unused "newMatrix" local variable.(¹œ™¾úÿÿÿÿ8æÈµÏ1
-E	java:S108")Either remove or fill this block of code.(¯Äâ8¡ƒˆµÏ1
+7
+java:S1220""Move this file to a named package.8¤£ ÆÏ1
+L	java:S106N"+Replace this use of System.out by a logger.(§Ø€İÿÿÿÿÿ8Ñ¥ ÆÏ1
+L	java:S106R"+Replace this use of System.out by a logger.(’Ñ¹†ÿÿÿÿÿ8Ò¥ ÆÏ1
+L	java:S106["+Replace this use of System.out by a logger.(§Ø€İÿÿÿÿÿ8Ó¥ ÆÏ1
+L	java:S106`"+Replace this use of System.out by a logger.(§Ø€İÿÿÿÿÿ8Ó¥ ÆÏ1
+L	java:S106d"+Replace this use of System.out by a logger.(§Ø€İÿÿÿÿÿ8Ó¥ ÆÏ1
+G	java:S106n"+Replace this use of System.out by a logger.(ô¤„å8§Ê ÆÏ1
