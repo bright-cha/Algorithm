@@ -1,9 +1,10 @@
 
-7
-java:S1220""Move this file to a named package.8¤£ ÆÏ1
-L	java:S106N"+Replace this use of System.out by a logger.(§Ø€Ýÿÿÿÿÿ8Ñ¥ ÆÏ1
-L	java:S106R"+Replace this use of System.out by a logger.(’Ñ¹†ÿÿÿÿÿ8Ò¥ ÆÏ1
-L	java:S106["+Replace this use of System.out by a logger.(§Ø€Ýÿÿÿÿÿ8Ó¥ ÆÏ1
-L	java:S106`"+Replace this use of System.out by a logger.(§Ø€Ýÿÿÿÿÿ8Ó¥ ÆÏ1
-L	java:S106d"+Replace this use of System.out by a logger.(§Ø€Ýÿÿÿÿÿ8Ó¥ ÆÏ1
-G	java:S106n"+Replace this use of System.out by a logger.(ô¤„å8§Ê ÆÏ1
+L
+java:S1066#"/Merge this if statement with the enclosing one.(‚›Úô8ùùÚØÏ1
+t
+java:S3776-"RRefactor this method to reduce its Cognitive Complexity from 20 to the 15 allowed.(„ù»†úÿÿÿÿ8¦ûÚØÏ1
+X	java:S125Y"<This block of commented-out lines of code should be removed.(Ê’†8©ûÚØÏ1
+]	java:S125_"<This block of commented-out lines of code should be removed.(Óªùþÿÿÿÿ8ªûÚØÏ1
+X	java:S125h"<This block of commented-out lines of code should be removed.(Ê’†8ªûÚØÏ1
+X	java:S125m"<This block of commented-out lines of code should be removed.(Ê’†8ªûÚØÏ1
+X	java:S125q"<This block of commented-out lines of code should be removed.(Ê’†8ªûÚØÏ1
